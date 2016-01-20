@@ -36,4 +36,13 @@
         android:layout_below="@+id/edit_result"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <fragment
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:name="com.example.dongja94.samplefragmentbuttontab.Tab1Fragment"
+        android:id="@+id/fragment"
+        android:layout_below="@+id/btn_finish"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>

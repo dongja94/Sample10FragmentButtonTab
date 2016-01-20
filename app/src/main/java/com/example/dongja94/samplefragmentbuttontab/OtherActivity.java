@@ -8,8 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class OtherActivity extends AppCompatActivity {
+public class OtherActivity extends AppCompatActivity implements Tab1Fragment.OnMessageReceiver {
 
     TextView messageView;
     EditText inputView;
@@ -39,5 +40,10 @@ public class OtherActivity extends AppCompatActivity {
         String message = intent.getStringExtra(EXTRA_MESSAGE);
         messageView.setText(message);
 
+    }
+
+    @Override
+    public void onMessageReceived(String message) {
+        Toast.makeText(this, "other activity : " + message, Toast.LENGTH_SHORT).show();
     }
 }

@@ -1,6 +1,7 @@
 package com.example.dongja94.samplefragmentbuttontab;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -15,6 +16,12 @@ import android.widget.TextView;
  * A simple {@link Fragment} subclass.
  */
 public class Tab1Fragment extends Fragment {
+
+    public interface OnMessageReceiver {
+        public void onMessageReceived(String message);
+    }
+
+    OnMessageReceiver mCallback;
 
     public static Tab1Fragment newInstance(String message) {
         Tab1Fragment f = new Tab1Fragment();
@@ -39,6 +46,14 @@ public class Tab1Fragment extends Fragment {
         }
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof OnMessageReceiver) {
+            mCallback = (OnMessageReceiver)context;
+        }
+    }
+
     EditText inputView;
     TextView messageView;
 
@@ -53,7 +68,12 @@ public class Tab1Fragment extends Fragment {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                messageView.setText(inputView.getText().toString());
+                String message = inputView.getText().toString();
+                messageView.setText(message);
+//                ((MainActivity)getActivity()).onMessageReceived(message);
+                if (mCallback != null) {
+                    mCallback.onMessageReceived(message);
+                }
             }
         });
         return v;
