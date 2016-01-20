@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Fragment old = getSupportFragmentManager().findFragmentByTag(TAB1_TAG);
                 if (old == null) {
-                    Fragment f = new Tab1Fragment();
+                    Fragment f = Tab1Fragment.newInstance("button creation...");
                     FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                     ft.replace(R.id.container, f, TAB1_TAG);
                     ft.commit();
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         if (savedInstanceState == null) {
-            Fragment f = new Tab1Fragment();
+            Fragment f = Tab1Fragment.newInstance("onCreate ....");
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.add(R.id.container, f, TAB1_TAG);
             ft.commit();
