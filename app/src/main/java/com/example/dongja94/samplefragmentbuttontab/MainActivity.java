@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements Tab1Fragment.OnMe
                 if (old == null) {
                     Fragment f = Tab1Fragment.newInstance("button creation...");
                     FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                    ft.setCustomAnimations(R.anim.slide_left_in, R.anim.rotate_out);
                     ft.replace(R.id.container, f, TAB1_TAG);
                     ft.commit();
 
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements Tab1Fragment.OnMe
                 if (old == null) {
                     Fragment f = new Tab2Fragment();
                     FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                    ft.setCustomAnimations(R.anim.slide_left_in, R.anim.rotate_out);
                     ft.replace(R.id.container, f, TAB2_TAG);
                     ft.commit();
 
